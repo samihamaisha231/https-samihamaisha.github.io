@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Samiha Akter Maisha | Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --brown-dark:#4a3629;
+  --brown:#7a5139;
+  --brown-light:#a67c5b;
+  --grey:#8c8782;
+  --grey-dark:#5f5a55;
+  --beige:#e6dac6;
+  --beige-light:#f3ece0;
+  --beige-dark:#d3c2a6;
+  --white:#ffffff;
+  --ink:#2f241c;
+  --text:#3b2f27;
+  --muted:#6b5f56;
+  --accent:linear-gradient(90deg,var(--brown-dark),var(--brown-light) 55%,var(--beige-dark));
+  --accent-light:linear-gradient(90deg,#ffffff,var(--beige-dark) 55%,var(--brown-light));
+  --shadow-sm:0 .1em .2em rgba(60,42,30,.16),0 .4em .9em rgba(60,42,30,.16);
+  --shadow-md:0 .2em .4em rgba(60,42,30,.20),0 .9em 1.8em rgba(60,42,30,.26);
+  --shadow-card:
+    0 .1em .2em rgba(60,42,30,.18),
+    0 .5em 1em rgba(60,42,30,.18),
+    0 1.4em 2.6em rgba(60,42,30,.20);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+body{
+  font-family:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:clamp(6px,min(1.6vh,1vw),22px);
+  color:var(--text);
+  background:var(--brown-dark);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* PAGE */
+
+.page{
+  width:100vw;
+  height:100vh;
+  height:100dvh;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 22%;
+  grid-template-rows:auto minmax(0,1fr) auto;
+  grid-template-areas:
+    "header side"
+    "main side"
+    "footer footer";
+  background:
+    radial-gradient(circle at 12% 30%,rgba(255,255,255,.65) 0,transparent 32%),
+    radial-gradient(circle at 85% 40%,rgba(166,124,91,.30) 0,transparent 32%),
+    radial-gradient(circle at 70% 85%,rgba(140,135,130,.28) 0,transparent 35%),
+    linear-gradient(135deg,#efe6d5,#dccdb3);
+  animation:rise .7s cubic-bezier(.2,.7,.2,1) both;
+}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(1em)}
+  to{opacity:1;transform:none}
+}
+
+/* HEADER */
+
+.header{
+  grid-area:header;
+  position:relative;
+  margin:1.2em 2em 0 3.4em;
+  padding:.9em 2em .9em 3em;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.6em;
+  background:linear-gradient(120deg,#4a3629 0%,#6b4d3a 55%,#8c8782 100%);
+  border-radius:1.1em;
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:var(--shadow-card),inset 0 .08em 0 rgba(255,255,255,.14);
+  color:#fff;
+}
+
+.header::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:.9em;
+  height:55%;
+  background:linear-gradient(180deg,#ffffff,var(--beige-dark));
+  border-radius:0 .6em .6em 0;
+}
+
+.header-text{
+  position:relative;
+  z-index:2;
+  min-width:0;
+  max-width:34em;
+}
+
+.header h1{
+  font-size:1.7em;
+  font-weight:800;
+  line-height:1.1;
+  letter-spacing:.03em;
+  text-shadow:0 .1em .8em rgba(40,25,15,.4);
+}
+
+.header h2{
+  font-size:1.1em;
+  font-weight:500;
+  font-style:italic;
+  margin:.15em 0 .25em;
+  color:#ecdcc2;
+}
+
+.header p{
+  font-size:.88em;
+  font-weight:600;
+  line-height:1.45;
+  color:#fbf6ee;
+}
+
+/* PROFILE PICTURE */
+
+.photo{
+  position:relative;
+  z-index:2;
+  flex:0 0 auto;
+  width:8.6em;
+  height:8.6em;
+  border-radius:50%;
+  padding:.35em;
+  background:conic-gradient(from 200deg,#ffffff,#d3c2a6,#7a5139,#e6dac6,#ffffff);
+  box-shadow:
+    0 0 0 .22em rgba(255,255,255,.22),
+    0 .5em 1em rgba(40,25,15,.35),
+    0 1em 2.2em rgba(40,25,15,.45),
+    0 0 2.4em rgba(230,218,198,.3);
+  transition:transform .4s ease,box-shadow .4s ease;
+}
+
+.photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(255,255,255,.35),transparent 40%);
+  pointer-events:none;
+}
+
+.photo:hover{
+  transform:scale(1.05) rotate(-1deg);
+  box-shadow:
+    0 0 0 .26em rgba(255,255,255,.32),
+    0 .6em 1.2em rgba(40,25,15,.4),
+    0 1.2em 2.6em rgba(40,25,15,.5),
+    0 0 3em rgba(230,218,198,.45);
+}
+
+.photo-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  overflow:hidden;
+  border:.2em solid #fff;
+  background:linear-gradient(145deg,#6b4d3a,#4a3629);
+  display:grid;
+  place-items:center;
+}
+
+.photo-inner .initials{
+  font-size:2.6em;
+  font-weight:800;
+  letter-spacing:.05em;
+  color:#fff;
+}
+
+.photo-inner img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center 30%;
+  filter:contrast(1.04) saturate(1.04);
+}
+
+/* MAIN CONTENT */
+
+.main{
+  grid-area:main;
+  min-height:0;
+  min-width:0;
+  overflow-y:auto;
+  padding:1.4em 2em 1.8em 3.4em;
+  display:grid;
+  grid-template-columns:repeat(11,minmax(0,1fr));
+  grid-template-rows:minmax(min-content,1.15fr) minmax(min-content,.7fr) minmax(min-content,1.6fr);
+  grid-template-areas:
+    "about about about about about about edu edu edu edu edu"
+    "skills skills skills skills skills skills skills skills skills skills skills"
+    "contact contact contact contact gallery gallery gallery gallery gallery gallery gallery";
+  gap:1.4em 1.8em;
+  perspective:80em;
+}
+
+.about{grid-area:about}
+.edu{grid-area:edu}
+.skills{grid-area:skills}
+.contact{grid-area:contact}
+.gallery{grid-area:gallery}
+
+/* RIGHT COLUMN */
+
+.side{
+  grid-area:side;
+  min-height:0;
+  min-width:0;
+  overflow-y:auto;
+  padding:1.2em 3em 1.8em .4em;
+  display:flex;
+  flex-direction:column;
+  gap:1.3em;
+  perspective:80em;
+}
+
+.side .more{flex:1.5 1 auto}
+.side .lang,.side .hobby{flex:1 1 auto}
+
+h3{
+  font-size:1.25em;
+  font-weight:800;
+  color:var(--ink);
+  letter-spacing:-.01em;
+  margin-bottom:.5em;
+}
+
+h3::after{
+  content:"";
+  display:block;
+  width:2.4em;
+  height:.25em;
+  margin-top:.3em;
+  border-radius:.3em;
+  background:var(--accent);
+}
+
+p{
+  line-height:1.6;
+  font-weight:500;
+  font-size:.95em;
+}
+
+/* GLASS CARDS (white + beige) */
+
+.glass{
+  border-radius:1.1em;
+  background:linear-gradient(135deg,rgba(255,253,249,.88) 0%,rgba(243,236,224,.66) 100%);
+  -webkit-backdrop-filter:blur(1.2em) saturate(110%);
+  backdrop-filter:blur(1.2em) saturate(110%);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:
+    var(--shadow-card),
+    inset 0 .08em 0 rgba(255,255,255,.95),
+    inset 0 -.08em 0 rgba(211,194,166,.35);
+}
+
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .glass{background:rgba(250,246,239,.96)}
+}
+
+.card3d{
+  --rx:0deg;
+  --ry:0deg;
+  min-width:0;
+  align-self:stretch;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:1em 1.4em 1.1em;
+  transform:rotateX(var(--rx)) rotateY(var(--ry));
+  transition:transform .25s ease,box-shadow .25s ease;
+  will-change:transform;
+}
+
+.card3d:hover{
+  transform:translateY(-.3em) rotateX(var(--rx)) rotateY(var(--ry));
+  box-shadow:
+    0 .2em .4em rgba(60,42,30,.24),
+    0 .9em 1.6em rgba(60,42,30,.26),
+    0 2em 3.4em rgba(60,42,30,.30),
+    inset 0 .08em 0 rgba(255,255,255,.98),
+    inset 0 -.08em 0 rgba(211,194,166,.4);
+}
+
+.about p{
+  font-weight:600;
+  color:#2f241c;
+}
+
+/* EDUCATION LIST */
+
+.list{list-style:none}
+
+.list li{
+  display:flex;
+  align-items:flex-start;
+  gap:.8em;
+  font-weight:700;
+  color:var(--ink);
+  font-size:.95em;
+  margin-bottom:.5em;
+  line-height:1.3;
+}
+
+.list li:last-child{margin-bottom:0}
+
+.list li::before{
+  content:"";
+  flex:0 0 .7em;
+  height:.7em;
+  margin-top:.4em;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--brown-light),var(--brown-dark));
+  box-shadow:0 .15em .4em rgba(74,54,41,.45);
+}
+
+.list .sub{
+  display:block;
+  font-weight:800;
+  font-size:.9em;
+  color:#4a382c;
+  margin-top:.1em;
+}
+
+/* SKILL CHIPS */
+
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6em .55em;
+}
+
+.chip{
+  padding:.38em .85em;
+  border-radius:2em;
+  font-size:.85em;
+  font-weight:800;
+  color:var(--ink);
+  background:linear-gradient(145deg,#ffffff,#efe6d6);
+  border:1px solid rgba(122,81,57,.45);
+  box-shadow:0 .1em .15em rgba(60,42,30,.18),0 .3em .7em rgba(60,42,30,.14);
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease;
+}
+
+.chip:hover{
+  transform:translateY(-.2em);
+  background:linear-gradient(145deg,#8b5e3c,#4a3629);
+  color:#fff;
+  box-shadow:0 .2em .3em rgba(60,42,30,.25),0 .7em 1.3em rgba(60,42,30,.30);
+}
+
+/* SKILLS STRIP */
+
+.skills{
+  padding:.8em 2em;
+  display:flex;
+  align-items:center;
+  gap:2em;
+  border-radius:1.1em;
+}
+
+.skills h3{
+  margin:0;
+  flex:0 0 auto;
+}
+
+.circles{
+  flex:1;
+  display:flex;
+  justify-content:space-around;
+  gap:.6em;
+}
+
+.circle-item{text-align:center}
+
+.circle{
+  width:4.8em;
+  height:4.8em;
+  border-radius:50%;
+  background:linear-gradient(145deg,#ffffff,#efe6d6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto .4em;
+  box-shadow:var(--shadow-sm),inset 0 .08em 0 #fff;
+  border:.15em solid rgba(166,124,91,.7);
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+
+.circle-item:hover .circle{
+  transform:translateY(-.3em);
+  box-shadow:var(--shadow-md);
+  border-color:var(--brown-dark);
+}
+
+.circle b{
+  font-size:1em;
+  font-weight:800;
+  color:var(--brown-dark);
+}
+
+.circle-item span{
+  font-size:.75em;
+  font-weight:800;
+  color:#4a382c;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+/* CONTACT */
+
+.contact{
+  min-width:0;
+  align-self:stretch;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:.9em 1.4em 1em;
+}
+
+.contact p{
+  line-height:1.7;
+  overflow-wrap:anywhere;
+  font-weight:600;
+  color:#2f241c;
+}
+
+.contact a{
+  color:var(--ink);
+  font-weight:700;
+  text-decoration:none;
+  transition:color .2s;
+}
+
+.contact a:hover{
+  color:var(--brown-light);
+  text-decoration:underline;
+}
+
+/* PROJECTS */
+
+.gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.2em;
+  align-self:stretch;
+  min-width:0;
+}
+
+.proj{
+  min-width:0;
+  padding:.9em 1.1em 1em;
+  border-radius:1em;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:.5em;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:var(--shadow-card);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+
+.proj:hover{
+  transform:translateY(-.3em) scale(1.02);
+  box-shadow:var(--shadow-md),0 1.6em 2.8em rgba(60,42,30,.28);
+}
+
+.proj h4{
+  font-size:1.05em;
+  font-weight:800;
+  line-height:1.2;
+  letter-spacing:.01em;
+}
+
+.proj ul{
+  list-style:none;
+  display:grid;
+  gap:.25em;
+}
+
+.proj li{
+  position:relative;
+  padding-left:1.1em;
+  font-size:.78em;
+  font-weight:600;
+  line-height:1.35;
+}
+
+.proj li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.5em;
+  width:.5em;
+  height:.5em;
+  border-radius:50%;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35em;
+}
+
+.tags span{
+  font-size:.68em;
+  font-weight:700;
+  padding:.2em .65em;
+  border-radius:2em;
+}
+
+.proj a{
+  align-self:flex-start;
+  font-size:.75em;
+  font-weight:800;
+  text-decoration:none;
+  padding:.35em .9em;
+  border-radius:2em;
+  transition:background .25s ease,color .25s ease;
+}
+
+/* BROWN PROJECT */
+
+.proj:nth-child(1){
+  background:linear-gradient(135deg,#8b5e3c,#4a3629);
+  color:#fff;
+}
+
+.proj:nth-child(1) li::before{background:#e6dac6}
+
+.proj:nth-child(1) .tags span{
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.32);
+}
+
+.proj:nth-child(1) a{
+  color:#fff;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.45);
+}
+
+.proj:nth-child(1) a:hover{
+  background:#fff;
+  color:#4a3629;
+}
+
+/* BEIGE PROJECT */
+
+.proj:nth-child(2){
+  background:linear-gradient(135deg,#f6efe3,#dccdb3);
+  color:var(--ink);
+  border:1px solid rgba(255,255,255,.9);
+}
+
+.proj:nth-child(2) li::before{background:#7a5139}
+
+.proj:nth-child(2) .tags span{
+  background:rgba(74,54,41,.08);
+  border:1px solid rgba(74,54,41,.3);
+}
+
+.proj:nth-child(2) a{
+  color:#4a3629;
+  background:rgba(74,54,41,.06);
+  border:1px solid rgba(74,54,41,.45);
+}
+
+.proj:nth-child(2) a:hover{
+  background:#4a3629;
+  color:#fff;
+}
+
+/* FOOTER */
+
+.footer{
+  grid-area:footer;
+  padding:.9em 3.4em;
+  background:linear-gradient(90deg,#3f2e23,#5a4234 50%,#3f2e23);
+  color:#f3ece0;
+  border-top:.3em solid transparent;
+  border-image:var(--accent-light) 1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:.85em;
+  font-weight:700;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  box-shadow:0 -.4em 1.2em rgba(60,42,30,.25);
+  position:relative;
+  z-index:5;
+}
+
+.footer a{
+  color:#e6dac6;
+  text-decoration:none;
+  transition:color .2s;
+}
+
+.footer a:hover{color:#fff}
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+  body{
+    font-size:clamp(6px,min(1.2vh,2.6vw),16px);
+  }
+
+  .page{
+    grid-template-columns:minmax(0,1fr);
+    grid-template-rows:auto minmax(0,1fr) auto auto;
+    grid-template-areas:
+      "header"
+      "main"
+      "side"
+      "footer";
+  }
+
+  .header{
+    margin:.9em 1.6em 0;
+    padding:.8em 1.2em .8em 2em;
+    gap:1em;
+    border-radius:1em;
+  }
+
+  .header::before{width:.7em}
+
+  .header h1{font-size:1.45em}
+  .header h2{font-size:1em}
+  .header p{font-size:.8em}
+
+  .photo{
+    width:7em;
+    height:7em;
+  }
+
+  .main{
+    padding:1.1em 1.6em .6em;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:
+      minmax(min-content,1.2fr)
+      minmax(min-content,1fr)
+      minmax(min-content,.9fr)
+      minmax(min-content,1.6fr);
+    grid-template-areas:
+      "about about"
+      "edu contact"
+      "skills skills"
+      "gallery gallery";
+    gap:.9em 1.2em;
+  }
+
+  .side{
+    padding:.4em 1.6em 1.1em;
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:.8em;
+    overflow:visible;
+  }
+
+  .side .more{flex:1 1 100%}
+  .side .lang,.side .hobby{flex:1 1 40%}
+
+  .card3d{padding:.8em 1em .9em}
+
+  .contact{padding:.8em 1em}
+
+  .skills{
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    gap:.8em;
+    padding:.9em 1.2em;
+  }
+
+  .circles{width:100%}
+
+  .circle{
+    width:4.2em;
+    height:4.2em;
+  }
+
+  .gallery{
+    grid-template-columns:1fr;
+    gap:.8em;
+  }
+
+  .footer{padding:.9em 1.8em}
+}
+
+@media (max-height:420px) and (min-width:701px){
+  .header{padding:.6em 1.6em .6em 3em}
+  .photo{width:6em;height:6em}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{
+    animation:none!important;
+    transition:none!important;
+  }
+  .card3d{transform:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+
+    <div class="header-text">
+      <h1>SAMIHA AKTER<br>MAISHA</h1>
+      <h2>Student</h2>
+      <p>CSE student at United International University, passionate about building web applications.</p>
+    </div>
+
+    <!-- PROFILE IMAGE -->
+    <div class="photo">
+      <div class="photo-inner">
+        <span class="initials">SM</span>
+
+        <img
+          src="WhatsApp Image 2026-11-14 at 2.28.10 PM.jpeg"
+          alt="Samiha Akter Maisha"
+          onerror="this.style.display='none'"
+        >
+
+      </div>
+    </div>
+
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+
+    <!-- ABOUT -->
+    <section class="about card3d glass">
+      <h3>About me</h3>
+      <p>
+        Hi, I'm Samiha Akter Maisha, a student of Computer Science and Engineering.
+        I enjoy building web applications from the database to the user interface,
+        using tools like PHP, MySQL, Node.js and React. I'm always learning new
+        frameworks and looking for projects where I can grow as a developer.
+      </p>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="edu card3d glass">
+      <h3>Education</h3>
+      <ul class="list">
+        <li>
+          <div>
+            SSC
+            <span class="sub">B.K.G.C Govt. Girl's High School</span>
+          </div>
+        </li>
+
+        <li>
+          <div>
+            HSC
+            <span class="sub">Habiganj Women's College, Habiganj</span>
+          </div>
+        </li>
+
+        <li>
+          <div>
+            B.Sc. in CSE
+            <span class="sub">United International University (UIU)</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills glass">
+      <h3>Skills</h3>
+
+      <div class="circles">
+
+        <div class="circle-item">
+          <div class="circle"><b>PHP</b></div>
+          <span>Backend</span>
+        </div>
+
+        <div class="circle-item">
+          <div class="circle"><b>MySQL</b></div>
+          <span>Database</span>
+        </div>
+
+        <div class="circle-item">
+          <div class="circle"><b>Node.js</b></div>
+          <span>Server</span>
+        </div>
+
+        <div class="circle-item">
+          <div class="circle"><b>React</b></div>
+          <span>Frontend</span>
+        </div>
+
+        <div class="circle-item">
+          <div class="circle"><b>JS</b></div>
+          <span>JavaScript</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact glass">
+      <h3>Contact me</h3>
+
+      <p>Phone: <a href="tel:+8801XXXXXXXXX">+880 1738915382</a></p>
+
+      <p>Email: <a href="mailto:yourname@gmail.com">samihamaisha231@gmail.com</a></p>
+
+      <p>Address: Lakecity Concord, Khilkhet, Dhaka, Bangladesh</p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="gallery">
+
+      <article class="proj">
+
+        <h4>FutureBot – Academic &amp; Career Guidance System</h4>
+
+        <ul>
+          <li>AI-powered chatbot</li>
+          <li>Student guidance system</li>
+          <li>Career recommendations</li>
+        </ul>
+
+        <div class="tags">
+          <span>PHP</span>
+          <span>MySQL</span>
+          <span>JavaScript</span>
+          <span>HTML</span>
+          <span>CSS</span>
+        </div>
+
+        <a href="https://github.com/shahirahm/FutureBot" target="_blank" rel="noopener">
+          View on GitHub &rarr;
+        </a>
+
+      </article>
+
+      <article class="proj">
+
+        <h4>Crime Investigation Game</h4>
+
+        <ul>
+          <li>Interactive crime investigation</li>
+          <li>Evidence and suspect management</li>
+          <li>AI-generated stories and hints</li>
+        </ul>
+
+        <div class="tags">
+          <span>React</span>
+          <span>Spring Boot</span>
+          <span>Java</span>
+          <span>MySQL</span>
+        </div>
+
+        <a href="https://github.com/samihamaisha231/crime_investigation_game" target="_blank" rel="noopener">
+          View on GitHub &rarr;
+        </a>
+
+      </article>
+
+    </section>
+
+  </div>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="side">
+
+    <section class="more card3d glass">
+      <h3>More skills</h3>
+
+      <div class="chips">
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">Bootstrap</span>
+        <span class="chip">Version Control</span>
+        <span class="chip">C++</span>
+        <span class="chip">C</span>
+        <span class="chip">Python</span>
+        <span class="chip">Problem Solving</span>
+        <span class="chip">Frameworks</span>
+        <span class="chip">And more&hellip;</span>
+      </div>
+    </section>
+
+    <section class="lang card3d glass">
+      <h3>Language</h3>
+
+      <div class="chips">
+        <span class="chip">Bangla</span>
+        <span class="chip">English</span>
+      </div>
+    </section>
+
+    <section class="hobby card3d glass">
+      <h3>Hobbies</h3>
+
+      <div class="chips">
+        <span class="chip">Painting</span>
+        <span class="chip">Travelling</span>
+      </div>
+    </section>
+
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span>Portfolio</span>
+    <a href="#">www.yourwebsite.com</a>
+  </footer>
+
+</main>
+
+<!-- CARD ANIMATION -->
+<script>
+(function(){
+
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  document.querySelectorAll('.card3d').forEach(function(card){
+
+    card.addEventListener('mousemove',function(e){
+
+      var r = card.getBoundingClientRect();
+
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+
+      card.style.setProperty('--ry',(x * 8).toFixed(2) + 'deg');
+      card.style.setProperty('--rx',(-y * 8).toFixed(2) + 'deg');
+
+    });
+
+    card.addEventListener('mouseleave',function(){
+
+      card.style.setProperty('--rx','0deg');
+      card.style.setProperty('--ry','0deg');
+
+    });
+
+  });
+
+})();
+</script>
+
+</body>
+</html>
